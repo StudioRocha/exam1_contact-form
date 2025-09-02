@@ -1,0 +1,55 @@
+/* Thanks Page */
+.thanks {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+/* 背景の Thank you 大文字（画像の雰囲気に寄せる） */
+.thanks::before {
+    content: "Thank you";
+    position: absolute;
+    inset: -130px 0 0 0;
+    display: block;
+    font-family: "Merriweather", serif;
+    font-size: clamp(80px, 18vw, 210px);
+    line-height: 1;
+    color: rgba(139, 121, 105, 0.12);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    white-space: nowrap; /* 折り返し防止 */
+}
+
+.thanks__title {
+    font-size: 1px;
+    height: 0;
+    overflow: hidden;
+}
+
+.thanks__message {
+    color: var(--c-text);
+    margin-top: -20px; /* 文字だけを少し上へ */
+    margin-bottom: 54px;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.thanks__actions {
+    position: relative;
+    z-index: 1;
+}
+
+.thanks__home {
+    min-width: 120px;
+}
+
+/* メイン領域（flex）内で上下中央に配置 */
+.layout__main > .thanks {
+    margin-top: auto;
+    margin-bottom: auto;
+}

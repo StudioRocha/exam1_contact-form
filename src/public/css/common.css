@@ -1,0 +1,455 @@
+/* ========================================
+   Theme Variables（テーマ用カラー/共通値）
+   ここを書き換えると全体の色味が一括で変わります
+   ======================================== */
+:root {
+    --c-text: #8b7969;
+    --c-accent: #8b7969;
+    --c-muted: #75675a;
+    --c-required: #f41515; /* 必須マークなど強調用 */
+    --c-header-border: #e5e5e5; /* ヘッダー専用のボーダー色 */
+    /* セレクト矢印アイコンのレスポンシブサイズ */
+    --select-icon-size: clamp(12px, 2.6vw, 32px);
+    /* 余白のレスポンシブ単位（小:8px〜大:16px） */
+    --space-s: clamp(8px, 1.2vw, 16px);
+}
+
+/* ========================================
+   Global Base（全ページ共通のベース）
+   タイポグラフィ / 背景色
+   ======================================== */
+body {
+    font-family: "Merriweather", "Noto Sans JP", serif;
+    line-height: 1.6;
+    color: var(--c-text);
+    background-color: #ffffff;
+}
+
+/* ========================================
+   Layout Styles（全体レイアウト）
+   ======================================== */
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+/* --- Header（ヘッダー） ------------------- */
+.layout__header {
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px solid var(--c-header-border);
+    padding: 8px 0;
+    text-align: center;
+    display: flex;
+    align-items: center; /* ヘッダー内で垂直中央揃え */
+}
+
+/* ヘッダー内のラッパー */
+.layout__header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 中身を中央に */
+    align-items: center;
+    gap: 8px;
+}
+
+/* サイトタイトル */
+.layout__header-title {
+    font-size: 32px; /* サイトタイトルを大きく */
+    font-weight: 400;
+    color: var(--c-text); /* 落ち着いたブラウン系 */
+    margin: 0; /* 余白で上寄りに見えないよう調整 */
+    letter-spacing: 0.5px;
+}
+
+/* タイトルのリンク */
+.layout__header-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ヘッダーナビ */
+.layout__header-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.layout__header-nav-list {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.layout__header-nav-link {
+    text-decoration: none;
+    color: var(--c-text);
+    font-weight: 400;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.layout__header-nav-link:hover {
+    color: #007bff;
+}
+
+/* --- Main（メイン領域） ------------------ */
+.layout__main {
+    flex: 1;
+    padding: 40px 0; /* タイトルを上に寄せるために上側の余白を縮小 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* --- Footer（フッター） ------------------ */
+.layout__footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.layout__footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.layout__footer-text {
+    color: var(--c-text);
+    font-size: 14px;
+}
+
+/* ========================================
+   Contact Form Styles（お問い合わせ）
+   ======================================== */
+/* ページ固有スタイルは個別CSSへ分離（confirm.css / thanks.css） */
+
+/* セクションタイトル */
+.contact__title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--c-text);
+    margin-bottom: 1px; /* タイトル直下の余白を詰める */
+    margin-top: 0;
+}
+
+/* コンテンツコンテナ（中央寄せ・最大幅） */
+.contact {
+    width: 100%;
+    max-width: 960px; /* フォーム領域の最大幅 */
+    margin: 0 auto; /* 画面中央に配置 */
+    padding: 0; /* 画面端との余白を撤廃（開始位置をさらに左へ） */
+}
+
+/* フォームコンテナ */
+.contact__form {
+    background-color: #fff;
+    padding: 20px 20px; /* 左右余白を少し減らし、ラベル開始位置を左へ */
+    width: 100%;
+    padding-left: 0; /* 左端開始位置をさらに左へ */
+    margin: 0 auto; /* 念のため中央寄せ */
+}
+
+/* 行（ラベル + 入力） */
+.contact__form-group {
+    display: grid; /* 比率でレイアウト */
+    grid-template-columns: 15% 1fr; /* ラベル:入力の比率（右は残り幅） */
+    column-gap: 22%; /* ラベルと入力の間隔（比率） */
+    align-items: flex-start;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+/* 画像に合わせて右カラムの入力幅を統一 */
+.contact__form-group > input.contact__form-input,
+.contact__form-group > select.contact__form-select,
+.contact__form-group > textarea.contact__form-textarea {
+    width: 100%;
+}
+
+/* テキストエリアは少し高め */
+.contact__form-textarea {
+    min-height: 140px;
+}
+
+/* ラベル */
+.contact__form-label {
+    width: auto; /* グリッド比率に従う */
+    padding-right: 0;
+    font-weight: 400;
+    color: var(--c-text);
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: nowrap; /* ラベルと※を折り返さない */
+}
+
+/* 必須マーク（※） */
+.contact__form-label--required::after {
+    content: " ※";
+    color: var(--c-required); /* 必須マークのみ赤 */
+}
+
+/* テキスト入力共通（input要素のみ） */
+input.contact__form-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3; /* ごく薄いグレージュ */
+    transition: border-color 0.3s ease, background-color 0.2s ease;
+    height: 40px; /* 一回り小さく */
+}
+
+/* 姓名入力の横並び */
+.contact__form-input--name {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    padding: 0; /* コンテナに枠線が出ないように */
+    border: 0;
+    background: transparent;
+}
+
+.contact__form-input--name input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    height: 40px;
+}
+
+/* 電話番号（3分割） */
+.contact__form-input--tel {
+    --tel-gap: 10px; /* 要素間の余白 */
+    --tel-hyphen: 12px; /* ハイフンの表示幅 */
+    display: grid; /* 3つの入力と2つのハイフンを総幅に収める */
+    grid-template-columns: 1fr var(--tel-hyphen) 1fr var(--tel-hyphen) 1fr;
+    column-gap: var(--tel-gap);
+    align-items: center;
+    width: 100%;
+    padding: 0; /* コンテナに枠線が出ないように */
+    border: 0;
+    background: transparent;
+}
+
+.contact__form-input--tel input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    height: 40px;
+}
+
+.contact__form-input--tel span {
+    color: var(--c-muted);
+    width: var(--tel-hyphen); /* ハイフンの幅を固定し、全体幅を安定 */
+    text-align: center;
+}
+
+/* ラジオボタンの並び */
+.contact__form-radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.contact__form-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact__form-radio input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--c-accent);
+    background-color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.contact__form-radio input[type="radio"]:checked {
+    background-color: var(--c-accent); /* 全面塗りつぶし */
+    border-color: var(--c-accent);
+}
+
+/* プルダウン */
+.contact__form-select {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--c-border);
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    cursor: pointer;
+    appearance: none;
+    /* ▼（塗りつぶし）のアイコン */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolygon fill='%238b7969' points='6,9 18,9 12,15'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2vw center; /* 画面幅に応じた余白 */
+    background-size: var(--select-icon-size);
+    padding-right: 40px;
+    color: var(--c-text);
+}
+
+/* お問い合わせの種類（category_id）: 幅のみ短く */
+.contact__form-select[name="category_id"] {
+    /* ベースで flex:1 が効いているため、幅指定が無視されないように固定化 */
+    flex: 0 0 220px;
+    width: 220px;
+}
+
+.contact__form-select option {
+    color: var(--c-text);
+    font-size: 13px; /* ドロップダウン内のフォントも統一 */
+    line-height: 1.4;
+}
+
+/* テキストエリア */
+.contact__form-textarea {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 16px;
+    min-height: 140px;
+    resize: vertical;
+    font-family: inherit;
+    background-color: #f6f4f3;
+}
+
+/* 送信ボタンのラッパー */
+.contact__form-button {
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* 送信ボタン */
+.contact__form-submit {
+    background-color: #7b6655; /* ブラウンボタン */
+    color: #fff;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 170px;
+}
+
+.contact__form-submit:hover {
+    background-color: #6c5a4b;
+}
+
+/* エラーメッセージ */
+.contact__form-error {
+    color: #d74b4b;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-left: 0;
+    writing-mode: horizontal-tb; /* 念のため横書きを明示 */
+    white-space: normal;
+    word-break: break-word;
+    display: block;
+    width: 100%;
+}
+
+/* グリッド内のエラーは入力カラムの下に横並びで表示 */
+.contact__form-group .contact__form-error {
+    grid-column: 2 / -1;
+}
+
+.contact__form-errors {
+    color: #d74b4b;
+    background: #fdecec;
+    border: 1px solid #f2bcbc;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+}
+
+/* ========================================
+   Responsive Design - Mobile First
+   ======================================== */
+@media (max-width: 768px) {
+    .layout__header {
+        padding: 20px 0;
+    }
+
+    .layout__header-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .layout__header-nav-list {
+        gap: 20px;
+    }
+
+    .layout__main {
+        padding: 30px 0;
+    }
+
+    .contact__form {
+        padding: 30px 20px;
+    }
+
+    /* スマホでは幅100%に戻す */
+    .contact__form-select[name="category_id"] {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .contact__form-group {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .contact__form-label {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .contact__form-input--name,
+    .contact__form-input--tel {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact__form-radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact__form-error {
+        margin-left: 0;
+    }
+}
+
+/* ラジオボタンの色味（OS/ブラウザが対応する場合） */
+.contact__form-radio input[type="radio"] {
+    accent-color: var(--c-accent);
+}
+
+/* プレースホルダー色のトーン */
+::placeholder {
+    color: var(--c-muted);
+}
