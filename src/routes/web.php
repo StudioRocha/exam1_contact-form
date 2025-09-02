@@ -26,11 +26,4 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // TODO: 管理画面のルートを追加
 });
 
-// 認証
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+// Fortifyが認証ルートを自動生成するため、手動ルートは削除

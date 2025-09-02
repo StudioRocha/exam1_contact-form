@@ -18,10 +18,20 @@
     padding: 0;
 }
 
+/* 全体を一括縮小（10%小さく） */
+.contact .contact__form {
+    transform: scale(0.9);
+    transform-origin: top center;
+}
+.contact .contact__title {
+    transform: scale(0.9);
+    transform-origin: top center;
+}
+
 /* フォーム全体 */
 .contact__form {
     background-color: #fff;
-    padding: 20px 20px;
+    padding: 30px 20px;
     width: 100%;
     padding-left: 0;
     margin: 0 auto;
@@ -31,7 +41,7 @@
 .contact__form-group {
     display: grid;
     grid-template-columns: 15% 1fr;
-    column-gap: 22%;
+    column-gap: 20%;
     align-items: flex-start;
     margin-bottom: 25px;
     margin-top: 15px;

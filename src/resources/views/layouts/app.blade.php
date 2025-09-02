@@ -37,19 +37,15 @@
                     </a>
                 </h1>
             </div>
+            <nav class="layout__header-login">
+                <a href="{{ route('login') }}" class="layout__header-nav-link"
+                    >login</a
+                >
+            </nav>
         </header>
 
         <!-- Main Content -->
         <main class="layout__main">@yield('content')</main>
-
-        <!-- Footer -->
-        <footer class="layout__footer">
-            <div class="layout__footer-container">
-                <p class="layout__footer-text">
-                    &copy; {{ date("Y") }} FashionablyLate. All rights reserved.
-                </p>
-            </div>
-        </footer>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>

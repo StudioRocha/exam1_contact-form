@@ -44,6 +44,8 @@ body {
     text-align: center;
     display: flex;
     align-items: center; /* ヘッダー内で垂直中央揃え */
+    justify-content: center; /* タイトルコンテナを中央に */
+    position: relative; /* 右端に独立配置するための基準 */
 }
 
 /* ヘッダー内のラッパー */
@@ -52,8 +54,8 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* 中身を中央に */
+    flex-direction: row; /* タイトル左、ナビ右端 */
+    justify-content: flex-start;
     align-items: center;
     gap: 8px;
 }
@@ -74,29 +76,40 @@ body {
 }
 
 /* ヘッダーナビ */
-.layout__header-nav {
-    display: flex;
-    justify-content: center;
+.layout__header-login {
+    position: absolute;
+    right: 60px; /* 右端からの余白 */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .layout__header-nav-list {
-    display: flex;
+    display: flex !important;
     list-style: none;
-    gap: 40px;
-    margin: 0;
-    padding: 0;
+    gap: 0 !important; /* ログインボタン1つのみなのでgapを0に */
+    margin: 0 !important;
+    padding: 0 !important;
+    justify-content: flex-end !important;
 }
 
 .layout__header-nav-link {
     text-decoration: none;
     color: var(--c-text);
     font-weight: 400;
-    font-size: 16px;
-    transition: color 0.3s ease;
+    font-size: 14px;
+    transition: color 0.3s ease, background-color 0.2s ease,
+        border-color 0.2s ease;
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--c-header-border);
+    background: #f8f8f8;
+    border-radius: 3px;
 }
 
 .layout__header-nav-link:hover {
-    color: #007bff;
+    color: var(--c-text);
+    background-color: #f7f7f7;
+    border-color: #dcdcdc;
 }
 
 /* --- Main（メイン領域） ------------------ */
@@ -143,7 +156,7 @@ body {
     font-weight: 400;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    min-width: 170px;
+    /* 幅はテキスト長に応じて自動 */
 }
 
 .contact__form-submit:hover {
