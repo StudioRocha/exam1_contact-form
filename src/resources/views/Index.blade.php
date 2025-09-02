@@ -2,6 +2,10 @@
 
 @section('title', 'Contact - FashionablyLate')
 
+@push('styles')
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+@endpush
+
 @section('content')
 <div class="contact">
     <h1 class="contact__title">Contact</h1>
