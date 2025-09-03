@@ -38,9 +38,35 @@
                 </h1>
             </div>
             <nav class="layout__header-login">
+                @if(Route::currentRouteName() === 'login')
+                <a
+                    href="{{ route('register') }}"
+                    class="layout__header-nav-link"
+                    >register</a
+                >
+                @elseif(Route::currentRouteName() === 'register')
                 <a href="{{ route('login') }}" class="layout__header-nav-link"
                     >login</a
                 >
+                @elseif(in_array(Route::currentRouteName(), ['home',
+                'contact.confirm', 'contact.thanks']))
+                {{-- 認証ページ以外では何も表示しない --}}
+                @else @auth
+                <form
+                    method="POST"
+                    action="{{ route('logout') }}"
+                    style="display: inline"
+                >
+                    @csrf
+                    <button type="submit" class="layout__header-nav-link">
+                        logout
+                    </button>
+                </form>
+                @else
+                <a href="{{ route('login') }}" class="layout__header-nav-link"
+                    >login</a
+                >
+                @endauth @endif
             </nav>
         </header>
 

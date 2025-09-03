@@ -23,7 +23,8 @@ Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thank
 
 // 管理画面（認証後）
 Route::prefix('admin')->middleware('auth')->group(function () {
-    // TODO: 管理画面のルートを追加
+    Route::get('/', [\App\Http\Controllers\Admin\ContactController::class, 'index'])->name('admin.dashboard');
+    Route::delete('/contacts/{id}', [\App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('admin.contacts.destroy');
 });
 
 // Fortifyが認証ルートを自動生成するため、手動ルートは削除

@@ -70,14 +70,14 @@
             </div>
         </form>
 
-        <div
+        <!-- <div
             class="contact__form-group"
             style="text-align: center; margin-top: 20px"
         >
             <a href="{{ route('register') }}" class="contact__form-link">
                 アカウントをお持ちでない方はこちら
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

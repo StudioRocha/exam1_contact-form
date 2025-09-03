@@ -1,6 +1,62 @@
+/* Register/Login 共通のページ固有スタイル（404回避と最小限の体裁） */
+
+.register-page {
+    background: #f1ece7;
+}
+
+.register .contact__form,
+.login .contact__form {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    background: #fff;
+    border: 1px solid #b0b0b0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    display: grid;
+    row-gap: 24px;
+}
+
+.register .contact__form-group,
+.login .contact__form-group {
+    display: block;
+    margin: 0 auto;
+    width: clamp(240px, 35vw, 400px);
+}
+
+.register .contact__form-label,
+.login .contact__form-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.register .contact__form-input,
+.login .contact__form-input,
+.register .contact__form-select,
+.login .contact__form-select,
+.register .contact__form-textarea,
+.login .contact__form-textarea {
+    width: 100%;
+    height: 40px;
+    padding: 8px 10px;
+    border: 1px solid #c9beb5;
+    border-radius: 3px;
+}
+
+.register .contact__form-textarea,
+.login .contact__form-textarea {
+    min-height: 120px;
+}
+
+.register .contact__form-button,
+.login .contact__form-button {
+    margin-top: 16px;
+    text-align: center;
+}
+
 /* Register Page overrides */
 .register .contact__title {
-    margin-bottom: 24px;
+    margin-bottom: 33px;
 }
 
 /* このページ専用の背景色（ヘッダー内を除く） */
@@ -31,7 +87,7 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* 落ち影 */
     padding: 38px 84px; /* 内側余白（広く調整） */
     display: grid; /* 子要素の間隔を均等に */
-    row-gap: 48px; /* 上下の間隔を広げる */
+    row-gap: 38px; /* 上下の間隔を広げる */
     /* 画面中央を基点に各フィールド幅を可変に（短く調整） */
     --field-width: clamp(240px, 35vw, 400px);
     justify-items: center; /* 子要素を中央基点に配置 */

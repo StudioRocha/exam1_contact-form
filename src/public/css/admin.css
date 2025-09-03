@@ -1,0 +1,182 @@
+.admin.page {
+    max-width: 980px;
+    margin: 0 auto;
+}
+.admin .contact__title {
+    text-align: center;
+    margin-bottom: 33px;
+    margin-top: -8px;
+}
+.admin__search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.admin__input {
+    height: 36px;
+    padding: 6px 10px;
+    border: 1px solid #c9beb5;
+    border-radius: 3px;
+}
+.admin__input--date {
+    width: 160px;
+}
+.admin__select {
+    height: 36px;
+    padding: 6px 10px;
+    border: 1px solid #c9beb5;
+    border-radius: 3px;
+    background: #fff;
+}
+.admin__button {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 3px;
+    border: 1px solid #7b6655;
+    cursor: pointer;
+}
+.admin__button--primary {
+    background: #7b6655;
+    color: #fff;
+}
+.admin__button--ghost {
+    background: #fff;
+    color: #7b6655;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+.admin__button--danger {
+    background: #b24a3b;
+    color: #fff;
+    border-color: #b24a3b;
+    margin-top: 12px;
+}
+.admin__flash {
+    background: #fff1f1;
+    border: 1px solid #f0c9c9;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.admin__table-wrapper {
+    background: #fff;
+    border: 1px solid #e6dfd8;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.admin__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin__table thead th {
+    background: #8c7766;
+    color: #fff;
+    text-align: left;
+    padding: 12px;
+    font-weight: 600;
+}
+.admin__table tbody td {
+    padding: 12px;
+    border-top: 1px solid #eee7e0;
+}
+.admin__detail-btn {
+    padding: 6px 12px;
+    border: 1px solid #c9beb5;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Modal */
+.admin__modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+.admin__modal.is-open {
+    display: block;
+}
+.admin__modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+.admin__modal-dialog {
+    position: relative;
+    width: min(640px, 92vw);
+    margin: 7vh auto;
+    background: #fff;
+    border: 1px solid #e6dfd8;
+    border-radius: 4px;
+    padding: 20px 24px;
+}
+.admin__modal-close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    background: #fff;
+    border: 1px solid #c9beb5;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.admin__detail-list {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    row-gap: 10px;
+    column-gap: 16px;
+}
+.admin__detail-list dt {
+    color: #7b6655;
+}
+.admin__detail-list dd {
+    margin: 0;
+}
+
+.admin__pagination {
+    margin-top: 14px;
+    text-align: center;
+}
+.admin__pagination--top {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+}
+
+/* Laravel pagination theme adjust */
+.admin__pagination--top .pagination {
+    display: inline-flex;
+    gap: 6px;
+    white-space: nowrap; /* 折り返し防止 */
+}
+.admin__pagination--top .pagination li {
+    list-style: none;
+}
+.admin__pagination--top .pagination a,
+.admin__pagination--top .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* 矢印・数字ボタンを小さく */
+    height: 24px;
+    font-size: 12px; /* 矢印も小さく */
+    border: 1px solid #c9beb5;
+    color: #8b7969;
+    background: #fff;
+}
+.admin__pagination--top .pagination .active span {
+    background: #7b6655;
+    color: #fff;
+    border-color: #7b6655;
+}
+.admin__pagination--top .pagination .disabled span,
+.admin__pagination--top .pagination .disabled a {
+    opacity: 0.5;
+    pointer-events: none;
+}

@@ -64,6 +64,19 @@
                     placeholder="例: coachtech1106"
                     required
                 />
+            </div>
+
+            <div class="contact__form-group">
+                <label class="contact__form-label contact__form-label--required"
+                    >パスワード（確認用）</label
+                >
+                <input
+                    type="password"
+                    name="password_confirmation"
+                    class="contact__form-input"
+                    placeholder="もう一度同じパスワードを入力"
+                    required
+                />
                 @error('password')
                 <div class="contact__form-error">{{ $message }}</div>
                 @enderror
