@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\RedirectResponse;
@@ -94,7 +95,11 @@ class ContactController extends Controller
             $value = $isExact ? $keyword : "%{$keyword}%";
             $operator = $isExact ? '=' : 'LIKE';
 
-            $query->where(function ($q) use ($operator, $value, $isExact) {
+            // スペース（半角/全角）を除去したキーワード
+            $keywordNoSpace = str_replace([' ', '　'], '', $keyword);
+            $valueNoSpace = $isExact ? $keywordNoSpace : "%{$keywordNoSpace}%";
+
+            $query->where(function ($q) use ($operator, $value, $isExact, $valueNoSpace) {
                 $q->where('first_name', $operator, $value)
                     ->orWhere('last_name', $operator, $value)
                     ->orWhere('email', $operator, $value);
@@ -106,6 +111,10 @@ class ContactController extends Controller
                     $q->orWhereRaw("CONCAT(last_name, ' ', first_name) LIKE ?", [$value])
                         ->orWhereRaw("CONCAT(last_name, first_name) LIKE ?", [$value]);
                 }
+
+                // スペース（半角/全角）無視かつ 姓名/名姓 の両順序を緩く判定
+                $q->orWhereRaw("REPLACE(REPLACE(CONCAT(last_name, first_name), ' ', ''), '　', '') {$operator} ?", [$valueNoSpace])
+                  ->orWhereRaw("REPLACE(REPLACE(CONCAT(first_name, last_name), ' ', ''), '　', '') {$operator} ?", [$valueNoSpace]);
             });
         }
 
@@ -143,14 +152,8 @@ class ContactController extends Controller
 
     private function categories(): array
     {
-        // 本来はマスタから。ここでは固定値で対応
-        return [
-            'all' => '全て',
-            1 => '商品のお問い合わせについて',
-            2 => '配送について',
-            3 => '返品・交換について',
-            4 => 'その他',
-        ];
+        // DB から取得（id => content）
+        return Category::orderBy('id')->pluck('content', 'id')->toArray();
     }
 }
 

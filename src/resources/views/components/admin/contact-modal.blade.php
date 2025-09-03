@@ -9,7 +9,7 @@
         <div class="admin__modal-body">
             <dl class="admin__detail-list">
                 <dt>お名前</dt>
-                <dd>{{ $contact->last_name }}　{{ $contact->first_name }}</dd>
+                <dd>{{ $contact->first_name }}　{{ $contact->last_name}}</dd>
                 <dt>性別</dt>
                 <dd>{{ ['', '男性', '女性', 'その他'][$contact->gender] }}</dd>
                 <dt>メールアドレス</dt>
