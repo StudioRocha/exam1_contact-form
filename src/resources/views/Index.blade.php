@@ -20,8 +20,8 @@
         <div class="contact__form-group">
             <label class="contact__form-label contact__form-label--required">お名前</label>
             <div class="contact__form-input contact__form-input--name">
-                <input type="text" name="first_name" placeholder="例:山田" value="{{ old('first_name') }}" required>
-                <input type="text" name="last_name" placeholder="例:太郎" value="{{ old('last_name') }}" required>
+                <input type="text" name="first_name" placeholder="例:山田" value="{{ old('first_name') }}" autocomplete="family-name" required>
+                <input type="text" name="last_name" placeholder="例:太郎" value="{{ old('last_name') }}" autocomplete="given-name" required>
             </div>
             @if ($errors->has('first_name') || $errors->has('last_name'))
                 <div class="contact__form-error">
