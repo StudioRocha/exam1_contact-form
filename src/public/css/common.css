@@ -94,16 +94,28 @@ body {
 
 .layout__header-nav-link {
     text-decoration: none;
-    color: var(--c-text);
+    /* color: var(--c-text); */
+    color: #d3c6bb;
     font-weight: 400;
     font-size: 14px;
     transition: color 0.3s ease, background-color 0.2s ease,
         border-color 0.2s ease;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 6px 14px;
     border: 1px solid var(--c-header-border);
     background: #f8f8f8;
     border-radius: 3px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* ボタン要素にも同一スタイルを適用（logout用） */
+button.layout__header-nav-link {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
 }
 
 .layout__header-nav-link:hover {

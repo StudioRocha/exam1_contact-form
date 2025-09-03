@@ -42,7 +42,7 @@
     border-radius: 3px;
 }
 .admin__input--date {
-    width: 110px;
+    width: 160px; /* 年月日の入力幅を拡大 */
 }
 .admin__input--keyword::placeholder {
     font-size: 12px;
@@ -56,10 +56,10 @@
     background: #fff;
 }
 .admin__select--gender {
-    width: 110px;
+    width: 90px;
 }
 .admin__select--category {
-    width: 200px;
+    width: 180px;
 }
 .admin__input--keyword {
     width: 340px;
@@ -77,17 +77,21 @@
 .admin__button--primary {
     background: #7b6655;
     color: #fff;
+    border: none;
+    font-size: 12px; /* フォント小さく */
 }
 .admin__button--ghost {
-    background: #fff;
-    color: #7b6655;
+    background: #d9c6b5;
+    color: #fff;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    border: none;
+    font-size: 12px; /* フォント小さく */
 }
 .admin__button--primary,
 .admin__button--ghost {
-    width: 88px;
+    width: 76px; /* ボタン幅を狭く */
     padding: 0;
     flex: 0 0 auto;
 }
@@ -135,6 +139,13 @@
     padding: 12px;
     border-top: 1px solid #eee7e0;
 }
+/* お名前（先頭カラム）の左側に余白を追加 */
+.admin__table thead th:first-child {
+    padding-left: 24px;
+}
+.admin__table tbody td:first-child {
+    padding-left: 24px;
+}
 .admin__detail-btn {
     padding: 6px 12px;
     border: 1px solid #c9beb5;
@@ -157,43 +168,42 @@
 .admin__modal-backdrop {
     position: absolute;
     inset: 0;
-    
 }
 .admin__modal-dialog {
     position: relative;
-    width: min(620px, 92vw);
+    width: min(580px, 92vw);
     margin: 7vh auto;
     background: #fff;
     border: 1px solid #85776c; /* 細い枠線 */
     border-radius: 2px;
     padding: 24px 28px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* モーダルのシャドウ */
-
-    
 }
 .admin__modal-close {
     position: absolute;
-    right:25px;
+    right: 25px;
     top: 25px;
     background: #fff;
     border: 1px solid #c9beb5;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    color: #8b7969;
+    font-size: 20px;
 }
 .admin__modal-body {
-    margin: 40px 32px;            /* 余白を少し軽く */
-    display: flex;                /* 中央寄せレイアウト */
+    margin: 40px 32px; /* 余白を少し軽く */
+    display: flex; /* 中央寄せレイアウト */
     flex-direction: column;
-    align-items: center;          /* 横方向の中央寄せ */
-    justify-content: center;      /* 縦方向の中央寄せ（内容量によって中央に） */
+    align-items: center; /* 横方向の中央寄せ */
+    justify-content: center; /* 縦方向の中央寄せ（内容量によって中央に） */
 }
 .admin__detail-list {
     display: grid; /* 2列のテーブル風レイアウト */
     grid-template-columns: 160px 1fr;
     column-gap: 20px;
-    row-gap:22px;
+    row-gap: 22px;
     text-align: left;
     margin: 0 auto;
 }
@@ -206,11 +216,11 @@
 }
 .admin__modal-body form {
     text-align: center;
-    margin-top: 28px;             /* 削除ボタンを少し下に */
+    margin-top: 80px; /* 削除ボタン位置をさらに下へ */
 }
 .admin__modal-body .admin__button--danger {
     display: inline-block;
-    margin: 16px auto 0;          /* 中央寄せ */
+    margin: 24px auto 0; /* 中央寄せ */
 }
 
 .admin__pagination {
@@ -248,6 +258,11 @@
     background: #fff;
     border-radius: 0;
     box-shadow: none;
+    text-decoration: none; /* アンダーバー削除 */
+}
+.admin__pagination--top .pagination a:hover,
+.admin__pagination--top .pagination a:focus {
+    text-decoration: none;
 }
 .admin__pagination--top .pagination li:last-child a,
 .admin__pagination--top .pagination li:last-child span {
