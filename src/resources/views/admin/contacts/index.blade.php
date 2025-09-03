@@ -14,21 +14,19 @@
     <h1 class="contact__title" style="margin-bottom: 16px;">Admin</h1>
 
     <form method="GET" action="{{ route('admin.dashboard') }}" class="admin__search">
-        <input type="text" name="keyword" value="{{ $inputs['keyword'] }}" placeholder="お名前やメールアドレスを入力してください" class="admin__input" />
+        <input type="text" name="keyword" value="{{ $inputs['keyword'] }}" placeholder="名前やメールアドレスを入力してください" class="admin__input admin__input--keyword" />
 
-        <select name="gender" class="admin__select">
-            <option value="gender" disabled {{ $inputs['gender']==='gender' ? 'selected' : '' }}>性別</option>
+        <select name="gender" class="admin__select admin__select--gender">
+            <option value="gender" {{ $inputs['gender']==='gender' ? 'selected' : '' }} disabled>性別</option>
             @foreach($genders as $key => $label)
                 <option value="{{ $key }}" {{ (string)$inputs['gender']===(string)$key ? 'selected' : '' }}>{{ $label }}</option>
             @endforeach
         </select>
 
-        <select name="category" class="admin__select">
-            <option value="all">全て</option>
+        <select name="category" class="admin__select admin__select--category">
+            <option value="category" {{ $inputs['category']==='category' ? 'selected' : '' }} disabled>お問い合わせの種類</option>
             @foreach($categories as $key => $label)
-                @if($key!=='all')
                 <option value="{{ $key }}" {{ (string)$inputs['category']===(string)$key ? 'selected' : '' }}>{{ $label }}</option>
-                @endif
             @endforeach
         </select>
 
@@ -47,10 +45,13 @@
         <div class="admin__flash">{{ session('status') }}</div>
     @endif
 
-    <div class="admin__table-wrapper">
+    <div class="admin__heading">
         <div class="admin__pagination admin__pagination--top">
             {{ $contacts->links() }}
         </div>
+    </div>
+
+    <div class="admin__table-wrapper">
         <table class="admin__table">
             <thead>
                 <tr>

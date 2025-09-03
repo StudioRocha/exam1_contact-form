@@ -68,8 +68,9 @@ class ContactController extends Controller
             'categories' => $this->categories(),
             'inputs' => [
                 'keyword' => $keyword,
-                'gender' => $gender ?? 'all',
-                'category' => $category ?? 'all',
+                // 初期表示はプレースホルダー（性別 / お問い合わせの種類）を選択状態にする
+                'gender' => $gender ?? 'gender',
+                'category' => $category ?? 'category',
                 'date' => $date ?? '',
                 'match' => $match,
             ],

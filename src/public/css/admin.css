@@ -2,6 +2,12 @@
     max-width: 980px;
     margin: 0 auto;
 }
+.admin__heading {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 8px 0;
+}
 .admin .contact__title {
     text-align: center;
     margin-bottom: 33px;
@@ -9,10 +15,25 @@
 }
 .admin__search {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: nowrap; /* 折り返さない */
+    gap: 10px;
     align-items: center;
     margin-bottom: 16px;
+    white-space: nowrap;
+}
+.admin__search .admin__input,
+.admin__search .admin__select {
+    background: #f4f4f4;
+    color: #b3967c;
+}
+.admin__search .admin__input::placeholder {
+    color: #9b8c7f;
+}
+.admin__search .admin__select option {
+    color: #8b7969;
+}
+.admin__search .admin__select option[disabled] {
+    color: #b9b0a7;
 }
 .admin__input {
     height: 36px;
@@ -21,7 +42,11 @@
     border-radius: 3px;
 }
 .admin__input--date {
-    width: 160px;
+    width: 110px;
+}
+.admin__input--keyword::placeholder {
+    font-size: 12px;
+    color: #9b8c7f;
 }
 .admin__select {
     height: 36px;
@@ -30,12 +55,24 @@
     border-radius: 3px;
     background: #fff;
 }
+.admin__select--gender {
+    width: 110px;
+}
+.admin__select--category {
+    width: 200px;
+}
+.admin__input--keyword {
+    width: 340px;
+}
 .admin__button {
     height: 36px;
     padding: 0 16px;
     border-radius: 3px;
     border: 1px solid #7b6655;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .admin__button--primary {
     background: #7b6655;
@@ -47,6 +84,12 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+}
+.admin__button--primary,
+.admin__button--ghost {
+    width: 88px;
+    padding: 0;
+    flex: 0 0 auto;
 }
 .admin__button--danger {
     background: #b24a3b;
@@ -70,14 +113,23 @@
 }
 .admin__table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate; /* 内側の縦線のにじみ/白線対策 */
+    border-spacing: 0; /* 余白はゼロで維持 */
 }
+.admin__table th,
+.admin__table td {
+    border-left: none !important;
+    border-right: none !important;
+}
+
 .admin__table thead th {
     background: #8c7766;
     color: #fff;
     text-align: left;
     padding: 12px;
     font-weight: 600;
+    /* 縦境界の白線を背景色で塗りつぶす */
+    box-shadow: inset 1px 0 0 #8c7766, inset -1px 0 0 #8c7766;
 }
 .admin__table tbody td {
     padding: 12px;
@@ -89,6 +141,7 @@
     background: #fff;
     border-radius: 3px;
     cursor: pointer;
+    color: #d1b39b;
 }
 
 /* Modal */
@@ -104,39 +157,60 @@
 .admin__modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.25);
+    
 }
 .admin__modal-dialog {
     position: relative;
-    width: min(640px, 92vw);
+    width: min(620px, 92vw);
     margin: 7vh auto;
     background: #fff;
-    border: 1px solid #e6dfd8;
-    border-radius: 4px;
-    padding: 20px 24px;
+    border: 1px solid #85776c; /* 細い枠線 */
+    border-radius: 2px;
+    padding: 24px 28px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* モーダルのシャドウ */
+
+    
 }
 .admin__modal-close {
     position: absolute;
-    right: 12px;
-    top: 10px;
+    right:25px;
+    top: 25px;
     background: #fff;
     border: 1px solid #c9beb5;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }
+.admin__modal-body {
+    margin: 40px 32px;            /* 余白を少し軽く */
+    display: flex;                /* 中央寄せレイアウト */
+    flex-direction: column;
+    align-items: center;          /* 横方向の中央寄せ */
+    justify-content: center;      /* 縦方向の中央寄せ（内容量によって中央に） */
+}
 .admin__detail-list {
-    display: grid;
+    display: grid; /* 2列のテーブル風レイアウト */
     grid-template-columns: 160px 1fr;
-    row-gap: 10px;
-    column-gap: 16px;
+    column-gap: 20px;
+    row-gap:22px;
+    text-align: left;
+    margin: 0 auto;
 }
 .admin__detail-list dt {
     color: #7b6655;
+    margin: 0;
 }
 .admin__detail-list dd {
     margin: 0;
+}
+.admin__modal-body form {
+    text-align: center;
+    margin-top: 28px;             /* 削除ボタンを少し下に */
+}
+.admin__modal-body .admin__button--danger {
+    display: inline-block;
+    margin: 16px auto 0;          /* 中央寄せ */
 }
 
 .admin__pagination {
