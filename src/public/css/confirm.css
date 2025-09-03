@@ -42,7 +42,9 @@
 }
 
 .confirm__row--grow .confirm__td {
-    white-space: pre-wrap;
+    white-space: pre-wrap; /* 改行を保持しつつ折り返し */
+    word-break: break-word; /* 長い連続文字を折り返し */
+    overflow-wrap: anywhere; /* どこでも折り返し */
 }
 
 .confirm__actions {

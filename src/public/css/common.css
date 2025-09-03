@@ -124,6 +124,141 @@ button.layout__header-nav-link {
     border-color: #dcdcdc;
 }
 
+/* ========================================
+   Pagination (共通コンポーネント)
+   ======================================== */
+.app-pagination {
+    margin: 10px 0;
+}
+.app-pagination--left {
+    display: flex;
+    justify-content: flex-start;
+}
+.app-pagination--center {
+    display: flex;
+    justify-content: center;
+}
+.app-pagination--right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.app-pagination .pagination {
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 0;
+    white-space: nowrap;
+}
+.app-pagination .pagination li {
+    list-style: none;
+}
+.app-pagination .pagination a,
+.app-pagination .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 24px;
+    font-size: 12px;
+    border: 1px solid #c9beb5;
+    border-right: none;
+    color: #8b7969;
+    background: #fff;
+    border-radius: 0;
+    text-decoration: none;
+}
+.app-pagination .pagination li:last-child a,
+.app-pagination .pagination li:last-child span {
+    border-right: 1px solid #c9beb5;
+}
+.app-pagination .pagination .active span {
+    background: #7b6655;
+    color: #fff;
+    border-color: #7b6655;
+}
+.app-pagination .pagination .disabled a,
+.app-pagination .pagination .disabled span {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ========================================
+   Modal (共通) - adminページ由来のモーダルを共通化
+   ======================================== */
+.admin__modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+.admin__modal.is-open {
+    display: block;
+}
+.admin__modal-backdrop {
+    position: absolute;
+    inset: 0;
+}
+.admin__modal-dialog {
+    position: relative;
+    width: min(730px, 92vw);
+    margin: 7vh auto;
+    background: #fff;
+    border: 1px solid #85776c;
+    border-radius: 2px;
+    padding: 24px 28px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.admin__modal-close {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    background: #fff;
+    border: 1px solid #c9beb5;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: #8b7969;
+    font-size: 20px;
+}
+.admin__modal-body {
+    margin: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.admin__detail-list {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 28px;
+    row-gap: 18px;
+    text-align: left;
+    margin: 0 auto;
+    width: 100%;
+}
+.admin__detail-list dt {
+    color: #7b6655;
+    margin: 0;
+    padding: 6px 0;
+    font-weight: 600;
+}
+.admin__detail-list dd {
+    margin: 0;
+    padding: 6px 0;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+.admin__modal-body form {
+    text-align: center;
+    margin-top: 100px;
+}
+.admin__modal-body .admin__button--danger {
+    display: inline-block;
+    margin: 24px auto 0;
+}
+
 /* --- Main（メイン領域） ------------------ */
 .layout__main {
     flex: 1;
