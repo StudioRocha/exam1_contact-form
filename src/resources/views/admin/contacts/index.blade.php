@@ -45,8 +45,8 @@
         <div class="admin__flash">{{ session('status') }}</div>
     @endif
 
-    <div class="admin__heading">　//ページネーションと、CSV出力ボタン
-        
+    <div class="admin__heading">
+        <a href="{{ route('admin.contacts.export', request()->query()) }}" class="admin__button admin__button--export">エクスポート</a>
         <x-pagination :paginator="$contacts" align="right" />
     </div>
 
