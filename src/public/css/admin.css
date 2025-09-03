@@ -147,12 +147,14 @@
     display: flex;
     justify-content: flex-end;
     margin: 10px 0;
+    no-border-top: 1px solid #c9beb5;
 }
 
 /* Laravel pagination theme adjust */
 .admin__pagination--top .pagination {
-    display: inline-flex;
-    gap: 6px;
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 0; /* ぴったり並べる */
     white-space: nowrap; /* 折り返し防止 */
 }
 .admin__pagination--top .pagination li {
@@ -167,8 +169,15 @@
     height: 24px;
     font-size: 12px; /* 矢印も小さく */
     border: 1px solid #c9beb5;
+    border-right: none; /* 隣接ボタンの右枠線を外して二重線を防ぐ */
     color: #8b7969;
     background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+}
+.admin__pagination--top .pagination li:last-child a,
+.admin__pagination--top .pagination li:last-child span {
+    border-right: 1px solid #c9beb5; /* 末尾のみ右枠を戻す */
 }
 .admin__pagination--top .pagination .active span {
     background: #7b6655;
