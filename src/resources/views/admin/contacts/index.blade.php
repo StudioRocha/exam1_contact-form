@@ -45,7 +45,8 @@
         <div class="admin__flash">{{ session('status') }}</div>
     @endif
 
-    <div class="admin__heading">
+    <div class="admin__heading">　//ページネーションと、CSV出力ボタン
+        
         <x-pagination :paginator="$contacts" align="right" />
     </div>
 
@@ -63,7 +64,7 @@
             <tbody>
             @foreach($contacts as $contact)
                 <tr>
-                    <td>{{ $contact->last_name }}　{{ $contact->first_name }}</td>
+                    <td>{{ $contact->first_name }}　{{ $contact->last_name }}</td>
                     <td>{{ ['','男性','女性','その他'][$contact->gender] }}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $categories[$contact->category_id] ?? 'その他' }}</td>

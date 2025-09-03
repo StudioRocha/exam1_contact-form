@@ -97,10 +97,11 @@
             <label class="contact__form-label contact__form-label--required">お問い合わせの種類</label>
             <select name="category_id" class="contact__form-select" required>
                 <option value="">選択してください</option>
-                <option value="1" {{ old('category_id') == '1' ? 'selected' : '' }}>商品について</option>
-                <option value="2" {{ old('category_id') == '2' ? 'selected' : '' }}>サービスについて</option>
-                <option value="3" {{ old('category_id') == '3' ? 'selected' : '' }}>不具合報告</option>
-                <option value="4" {{ old('category_id') == '4' ? 'selected' : '' }}>その他</option>
+                @foreach(($categories ?? []) as $c)
+                    <option value="{{ $c->id }}" {{ old('category_id') == (string)$c->id ? 'selected' : '' }}>
+                        {{ $c->content }}
+                    </option>
+                @endforeach
             </select>
             @if ($errors->has('category_id'))
                 <div class="contact__form-error">{{ $errors->first('category_id') }}</div>

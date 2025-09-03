@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactFormRequest;
 use App\Models\Contact;
+use App\Models\Category;
 
 class ContactController extends Controller
 {
@@ -13,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('Index');
+        $categories = Category::orderBy('id')->get();
+        return view('Index', compact('categories'));
     }
 
     /**
@@ -30,12 +32,7 @@ class ContactController extends Controller
             '3' => 'その他',
         ][$request->gender] ?? '';
 
-        $categoryLabel = [
-            '1' => '商品について',
-            '2' => 'サービスについて',
-            '3' => '不具合報告',
-            '4' => 'その他',
-        ][$request->category_id] ?? '';
+        $categoryLabel = Category::where('id', $request->category_id)->value('content') ?? '';
 
         return view('contact.confirm', compact('request', 'genderLabel', 'categoryLabel'));
     }

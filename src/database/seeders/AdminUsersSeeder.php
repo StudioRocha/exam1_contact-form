@@ -18,13 +18,7 @@ class AdminUsersSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
             ],
-            // 例)
-            // [
-            //     'email' => 'staff1@example.com',
-            //     'name' => 'Staff 1',
-            //     'password' => Hash::make('change-me'),
-            //     'email_verified_at' => now(),
-            // ],
+        
         ];
 
         foreach ($adminUsers as $user) {
