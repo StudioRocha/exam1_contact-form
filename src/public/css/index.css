@@ -6,8 +6,7 @@
     font-size: 36px;
     font-weight: 400;
     color: var(--c-text);
-    margin-bottom: 1px;
-    margin-top: 0px; /* H1開始位置を下にずらす */
+    margin-top: -32px; /* タイトル開始位置を少し上へ */
 }
 
 /* コンテナ */
@@ -16,15 +15,28 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 0;
-    /* このページの main コンテンツ全体を縮小 */
-    transform: scale(0.8);
+    transform: scale(0.85); /*全体スケール*/
+}
+
+/* 画面にフィット（高さ基準でスケール） */
+.viewport-fit {
+    /* このページ専用の高さ基準（フォーム全体の想定高さ） */
+    --base-height: 1400px;
+
+    /* 高さのみでスケールを決定（元の値に係数を乗算） */
+    --scale-raw: clamp(0.5, 100vh / var(--base-height), 3.92);
+    --scale: calc(var(--scale-raw) * var(--shrink));
+    transform: scale(var(--scale));
     transform-origin: top center;
-    width: calc(100% / 0.8);
+    width: calc(100% / var(--scale));
+    min-height: calc(100vh / var(--scale));
 }
 
 /* このページではメインの縦位置は共通のまま（見出しはそのまま） */
 .layout__main {
     align-items: flex-start;
+    /* 共通の40pxを上書きして余白を圧縮 */
+    padding: 6px 0;
 }
 
 /* 全体を一括（個別スケールは無効化） */
@@ -51,10 +63,10 @@
     display: grid;
     grid-template-columns: 15% 1fr;
     column-gap: 20%;
-    row-gap: 16px; /* 行内上下の間隔 */
+    row-gap: 12px; /* 行内上下の間隔を詰める */
     align-items: flex-start;
-    margin-bottom: 44px; /* グループ間の余白を広く */
-    margin-top: 25px; /*開始位置を下にずらす */
+    margin-bottom: 28px; /* グループ間の余白を縮小 */
+    margin-top: 12px; /* 開始位置を少し下げる */
 }
 
 /* 入力幅を安定 */
@@ -212,10 +224,10 @@ input.contact__form-input {
     background-color: #f6f4f3;
 }
 
-/* 送信ボタンのラッパー */
+/* 確認ボタンのラッパー */
 .contact__form-button {
+    margin-top: 32px;
     text-align: center;
-    margin-top: 60px;
 }
 
 /* エラー表示 */

@@ -1,6 +1,5 @@
 @extends('layouts.app') @section('title', 'Register - FashionablyLate')
 @push('styles')
-<link href="{{ asset('css/index.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
 @endpush @section('content')
 <div class="register-page">
