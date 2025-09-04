@@ -54,6 +54,20 @@ php artisan migrate
 php artisan db:seed
 ```
 
+
+<p style="color:#d74b4b; font-weight:600;">
+※Windows WSL 環境ではファイル権限のエラーが出る場合があります。
+ブラウザでlocalhost接続時に "Permission denied"というエラーが発生した場合は、
+このプロジェクトのroot ディレクトリで下記のコマンドを実行して再接続して下さい。
+
+</p>
+
+```bash
+$ sudo chmod -R 777 src/*
+```
+
+
+
 ## 使用技術(実行環境)
 
 -   php:8.1-fpm
