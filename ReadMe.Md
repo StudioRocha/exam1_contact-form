@@ -1,33 +1,20 @@
-実行手順（Docker内で）:
-php artisan migrate
-php artisan db:seed --class=CategorySeeder
-
-
-# 確認テスト_お問い合わせフォーム
+# 確認テスト\_お問い合わせフォーム
 
 ## 環境構築
 
 **Docker ビルド**
 
-1. `git clone git@github.com:StudioRocha/dictionary.git`
-2. DockerDesktop アプリを立ち上げる
-3. `docker-compose up -d --build`
+1. `git@github.com:StudioRocha/exam1_contact-form.git`
+2. `docker-compose up -d --build`
 
-> _Mac の M1・M2 チップの PC の場合、`no matching manifest for linux/arm64/v8 in the manifest list entries`のメッセージが表示されビルドができないことがあります。
-> エラーが発生する場合は、docker-compose.yml ファイルの「mysql」内に「platform」の項目を追加で記載してください_
-
-```bash
-mysql:
-   platform: linux/x86_64(この文追加)
-   image: mysql:8.0.26
-   environment:
-```
+※補足: MySQL は OS によって起動しない場合があるため、各 PC に合わせて docker-compose.yml を編集してください。
 
 **Laravel 環境構築**
 
 1. `docker-compose exec php bash`
 2. `composer install`
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
+
+3. .env.example から .env を作成し、環境変数を設定
 4. .env に以下の環境変数を追加
 
 ```text
@@ -53,21 +40,31 @@ php artisan migrate
 
 7. シーディングの実行
 
+   .contacts テーブルにダミーデータを 35 件作成
+   
+   .categories テーブル(お問い合わせの種類)のダミーデータはシーダーファイルを使用し、以下５件のダミーデータを作成
+
+   -   商品のお届けについて
+   -   商品の交換について
+   -   商品トラブル
+   -   ショップへのお問い合わせ
+   -   その他
+
 ```bash
 php artisan db:seed
 ```
 
 ## 使用技術(実行環境)
 
--   PHP8.3.0
--   Laravel8.83.27
--   MySQL8.0.26
+-   php:8.1-fpm
+-   Laravel 8.83.8
+-   MySQL 8.0.26
 
 ## ER 図
 
-<img src="docs/images/ER.drawio.svg" width="640" alt="ER図">
+<img src="docs/images/ERsvg" width="640" alt="ER図">
 
-ソース（編集用）: [docs/images/ER.drawio.svg](docs/images/ER.drawio.svg)
+ソース（編集用）: [docs/ER.dio]
 
 ## URL
 

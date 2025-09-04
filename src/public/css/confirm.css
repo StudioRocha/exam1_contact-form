@@ -11,7 +11,7 @@
     font-size: 26px;
     font-weight: 400;
     color: var(--c-text);
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .confirm__table {
@@ -23,6 +23,7 @@
 .confirm__row {
     display: grid;
     grid-template-columns: 25% 1fr;
+    align-items: stretch;
     border-bottom: 1px solid #eae7e4;
 }
 
@@ -39,12 +40,16 @@
 .confirm__td {
     padding: 16px 20px;
     color: var(--c-text);
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
 }
 
 .confirm__row--grow .confirm__td {
-    white-space: pre-wrap; /* 改行を保持しつつ折り返し */
-    word-break: break-word; /* 長い連続文字を折り返し */
-    overflow-wrap: anywhere; /* どこでも折り返し */
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .confirm__actions {
@@ -66,4 +71,10 @@
     align-items: center;
     padding: 12px 0; /* 送信ボタンの縦パディングと合わせる */
     line-height: 1; /* 高さのブレを抑制 */
+}
+
+/* 確認ページでは親の viewport-fit のスケールを無効化して幅指定を反映 */
+.viewport-fit:has(.confirm) {
+    transform: none !important;
+    width: 100% !important;
 }

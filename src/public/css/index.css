@@ -16,19 +16,21 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 0;
+    /* このページの main コンテンツ全体を縮小 */
+    transform: scale(0.8);
+    transform-origin: top center;
+    width: calc(100% / 0.8);
 }
 
 /* このページではメインの縦位置は共通のまま（見出しはそのまま） */
 .layout__main {
     align-items: flex-start;
-      
 }
 
-/* 全体を一括 */
+/* 全体を一括（個別スケールは無効化） */
 .contact .contact__form {
     transform-origin: top center;
     transform: none;
-       transform: scale(0.7);
 }
 .contact .contact__title {
     transform-origin: top center;
@@ -42,7 +44,6 @@
     max-width: 920px; /* フォーム全体を適度な幅にして中央配置 */
     padding-left: 0;
     margin: 0 auto; /* 中央配置 */
-
 }
 
 /* 行（ラベル + 入力） */
