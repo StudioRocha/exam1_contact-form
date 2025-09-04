@@ -35,6 +35,20 @@ body {
     background-color: #ffffff;
 }
 
+/* 画面幅に応じて全体を自動フィットさせる共通ラッパー */
+.viewport-fit {
+    --base-width: 980px;
+    --scale: clamp(1, 100vw / var(--base-width), 1.3);
+    transform: scale(var(--scale));
+    transform-origin: top center;
+    width: calc(100% / var(--scale));
+    margin: 0 auto;
+    /* layout のフレックス子要素として main に高さを渡す */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /* --- Header（ヘッダー） ------------------- */
 .layout__header {
     background-color: #ffffff;
@@ -268,24 +282,7 @@ button.layout__header-nav-link {
     align-items: flex-start;
 }
 
-/* --- Footer（フッター） ------------------ */
-.layout__footer {
-    background-color: #ffffff;
-    border-top: 1px solid #e5e5e5;
-    padding: 20px 0;
-    text-align: center;
-}
 
-.layout__footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.layout__footer-text {
-    color: var(--c-text);
-    font-size: 14px;
-}
 
 /* ========================================
    Contact Form Styles（お問い合わせ）

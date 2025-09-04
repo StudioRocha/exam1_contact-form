@@ -1,14 +1,23 @@
-.admin.page {
-    max-width: 980px;
-    margin: 0 auto;
+.admin__zoom {
+    /* transform: scale(1.2); */
+    transform-origin: top center;
 }
-.admin__heading {
+.admin__pager {
     display: flex;
     justify-content: space-between; /* 左:エクスポート 右:ページネーション */
     align-items: center;
     margin: 8px 0;
 }
-.admin .contact__title {
+.admin__header {
+    margin-bottom: 8px;
+}
+.admin__filters {
+    margin-bottom: 8px;
+}
+.admin__content {
+    margin-top: 8px;
+}
+.admin__title {
     text-align: center;
     margin-bottom: 33px;
     margin-top: -8px;
@@ -16,7 +25,7 @@
 .admin__search {
     display: flex;
     flex-wrap: nowrap; /* 折り返さない */
-    gap: 10px;
+    gap: 15px;
     align-items: center;
     margin-bottom: 16px;
     white-space: nowrap;

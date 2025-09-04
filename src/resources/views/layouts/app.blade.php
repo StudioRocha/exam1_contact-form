@@ -71,7 +71,9 @@
         </header>
 
         <!-- Main Content -->
-        <main class="layout__main">@yield('content')</main>
+        <div class="viewport-fit">
+            <main class="layout__main">@yield('content')</main>
+        </div>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>

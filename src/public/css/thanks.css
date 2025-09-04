@@ -5,13 +5,21 @@
     margin: 0 auto;
     text-align: center;
     position: relative;
+    padding: 0; /* 親で中央配置するため余白はなし */
+}
+
+/* このページでは共通ヘッダーを非表示 */
+.layout__header {
+    display: none;
 }
 
 /* 背景の Thank you 大文字（画像の雰囲気に寄せる） */
 .thanks::before {
     content: "Thank you";
     position: absolute;
-    inset: -130px 0 0 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 背景文字をど真ん中に */
     display: block;
     font-family: "Merriweather", serif;
     font-size: clamp(80px, 18vw, 210px);
@@ -21,6 +29,7 @@
     user-select: none;
     z-index: 0;
     white-space: nowrap; /* 折り返し防止 */
+    text-align: center;
 }
 
 .thanks__title {
@@ -31,12 +40,12 @@
 
 .thanks__message {
     color: var(--c-text);
-    margin-top: -20px; /* 文字だけを少し上へ */
-    margin-bottom: 54px;
+    margin: 0 0 28px; /* 背景と干渉しないよう安定 */
     position: relative;
     z-index: 1;
     font-weight: 500;
-    font-size: 21px;
+    font-size: 27px;
+   
 }
 
 .thanks__actions {
@@ -48,8 +57,10 @@
     min-width: 120px;
 }
 
-/* メイン領域（flex）内で上下中央に配置 */
-.layout__main > .thanks {
-    margin-top: auto;
-    margin-bottom: auto;
+/* メイン領域を上下左右中央寄せ（thanksページ適用時） */
+.layout__main {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

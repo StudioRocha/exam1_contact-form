@@ -1,5 +1,10 @@
 /* Register/Login 共通のページ固有スタイル（404回避と最小限の体裁） */
 
+/* ヘッダー以外のページ背景色を layout__main に合わせて統一 */
+body.layout {
+    background: #f1ece7;
+}
+
 .register-page {
     background: #f1ece7;
     /* 画面中央に配置 */
@@ -7,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0; /* ヘッダー分の余白を確保 */
+    padding: 10px 0; /* ヘッダー分の余白を確保 */
 }
 
 .register .contact__form,
@@ -21,9 +26,6 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
     display: grid;
-  
-  
-  
 }
 
 .register .contact__form-group,
@@ -36,7 +38,7 @@
 .register .contact__form-label,
 .login .contact__form-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 38px;
 }
 
 .register .contact__form-input,
@@ -63,9 +65,11 @@
     text-align: center;
 }
 
-/* Register Page overrides */
-.register .contact__title {
-    margin-bottom: 33px;
+/* Auth titles (Register / Login) 上余白を詰める */
+.register .contact__title,
+.login .contact__title {
+    margin-bottom: 0;
+    margin-top: -8px;
 }
 
 /* このページ専用の背景色（ヘッダー内を除く） */
@@ -89,7 +93,7 @@
 .register .contact__form {
     max-width: 616px; /* ひろく */
 
-    margin: 38px auto; /* 外側のマージン */
+    margin: 38px auto; /* フォーム開始位置を上げる */
     background-color: #ffffff;
     border: 1px solid #b0b0b0; /* ボタンと同色の薄い茶色の枠線 */
     border-radius: 8px; /* 角丸 */
@@ -100,6 +104,11 @@
     /* 画面中央を基点に各フィールド幅を可変に（短く調整） */
     --field-width: clamp(240px, 35vw, 400px);
     justify-items: center; /* 子要素を中央基点に配置 */
+}
+
+/* Login フォームの開始位置も下げる */
+.login .contact__form {
+    margin: 28px auto; /* フォーム開始位置を上げる */
 }
 
 /* エラー表示の位置/間隔微調整 */
