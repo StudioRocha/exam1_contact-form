@@ -62,7 +62,7 @@ php artisan db:seed
 
 ## ER 図
 
-<img src="docs/images/ERsvg" width="640" alt="ER図">
+<img src="docs/images/ER.svg" width="640" alt="ER図">
 
 ソース（編集用）: [docs/ER.dio]
 
