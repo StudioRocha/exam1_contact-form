@@ -11,8 +11,14 @@
 
 **Laravel 環境構築**
 
-1. `docker-compose exec php bash`
-2. `composer install`
+1. コマンドライン上
+```bash
+ docker-compose exec php bash
+```
+2. PHPコンテナ上
+```bash
+ composer install
+```
 
 3. .env.example から .env を作成し、環境変数を設定
 4. .env に以下の環境変数を追加
@@ -55,9 +61,11 @@ php artisan db:seed
 ```
 
 <BR>
-<BR>
+
 
 ![Warning](https://img.shields.io/badge/Warning-Permission%20denied-red)
+UnexpectedValueException ページエラーが出た場合
+
 Windows WSL 環境ではファイル権限のエラーが出る場合があります。
 ブラウザでlocalhost接続時に "Permission denied"というエラーが発生した場合は、
 このプロジェクトのroot ディレクトリで下記のコマンドを実行して再接続して下さい。
