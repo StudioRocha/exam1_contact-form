@@ -1,0 +1,152 @@
+/* Register/Login 共通のページ固有スタイル（404回避と最小限の体裁） */
+
+/* ヘッダー以外のページ背景色を layout__main に合わせて統一 */
+body.layout {
+    background: #f1ece7;
+}
+
+.register-page {
+    background: #f1ece7;
+    /* 画面中央に配置 */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0; /* ヘッダー分の余白を確保 */
+}
+
+.register .contact__form,
+.login .contact__form,
+.register-page .contact__form {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    background: #fff;
+    border: 1px solid #b0b0b0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    display: grid;
+}
+
+.register .contact__form-group,
+.login .contact__form-group {
+    display: block;
+    margin: 0 auto;
+    width: clamp(240px, 35vw, 400px);
+}
+
+.register .contact__form-label,
+.login .contact__form-label {
+    display: block;
+    margin-bottom: 38px;
+}
+
+.register .contact__form-input,
+.login .contact__form-input,
+.register .contact__form-select,
+.login .contact__form-select,
+.register .contact__form-textarea,
+.login .contact__form-textarea {
+    width: 100%;
+    height: 40px;
+    padding: 8px 10px;
+    border: 1px solid #c9beb5;
+    border-radius: 3px;
+}
+
+.register .contact__form-textarea,
+.login .contact__form-textarea {
+    min-height: 120px;
+}
+
+.register .contact__form-button,
+.login .contact__form-button {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* Auth titles (Register / Login) 上余白を詰める */
+.register .contact__title,
+.login .contact__title {
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: -8px;
+}
+
+/* このページ専用の背景色（ヘッダー内を除く） */
+.register-page {
+    background: #f1ece7;
+}
+.layout__main {
+    background: #f1ece7;
+}
+.register-page .layout__header {
+    background: #ffffff;
+}
+.register-page .layout__footer {
+    background: #ffffff;
+}
+
+/* 右上のlogin見た目微調整が必要なときはここで */
+/* .layout__header-nav-link { } */
+
+/* フォーム幅など個別調整 */
+.register .contact__form {
+    max-width: 616px; /* ひろく */
+
+    margin: 38px auto; /* フォーム開始位置を上げる */
+    background-color: #ffffff;
+    border: 1px solid #b0b0b0; /* ボタンと同色の薄い茶色の枠線 */
+    border-radius: 8px; /* 角丸 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* 落ち影 */
+    padding: 38px 84px; /* 内側余白（広く調整） */
+    display: grid; /* 子要素の間隔を均等に */
+    row-gap: 38px; /* 上下の間隔を広げる */
+    /* 画面中央を基点に各フィールド幅を可変に（短く調整） */
+    --field-width: clamp(240px, 35vw, 400px);
+    justify-items: center; /* 子要素を中央基点に配置 */
+}
+
+/* Login フォームの開始位置も下げる */
+.login .contact__form {
+    margin: 28px auto; /* フォーム開始位置を上げる */
+}
+
+/* エラー表示の位置/間隔微調整 */
+.register .contact__form-error {
+    margin-top: 8px;
+}
+
+/* ラベルを各入力フィールドの上に配置（Indexの横並びを上書き） */
+.register .contact__form-group {
+    display: block;
+    margin: 0; /* デフォルトの下余白を無効化して均等に */
+    width: var(--field-width); /* 画面中央を基点とした幅 */
+    margin-left: auto;
+    margin-right: auto;
+}
+.register .contact__form-label {
+    display: block;
+    margin-bottom: 8px;
+    white-space: normal;
+}
+
+/* Registerページでは必須「※」は非表示 */
+.register .contact__form-label--required::after {
+    content: none;
+}
+
+/* 入力フィールドの高さ（必要に応じて数値を調整） */
+.register input.contact__form-input,
+.register select.contact__form-select {
+    height: 44px;
+}
+
+.register textarea.contact__form-textarea {
+    min-height: 120px; /* 入力欄の高さ */
+}
+
+/* 登録ボタンの上余白（index.cssの60pxを上書きして上に寄せる） */
+.register .contact__form-button {
+    margin-top: 16px;
+}

@@ -1,0 +1,178 @@
+.admin__zoom {
+    /* transform: scale(1.2); */
+    transform-origin: top center;
+}
+.admin__pager {
+    display: flex;
+    justify-content: space-between; /* 左:エクスポート 右:ページネーション */
+    align-items: center;
+    margin: 8px 0;
+}
+.admin__header {
+    margin-bottom: 8px;
+}
+.admin__filters {
+    margin-bottom: 8px;
+}
+.admin__content {
+    margin-top: 8px;
+}
+.admin__title {
+    text-align: center;
+    margin-bottom: 33px;
+    margin-top: -8px;
+}
+.admin__search {
+    display: flex;
+    flex-wrap: nowrap; /* 折り返さない */
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 16px;
+    white-space: nowrap;
+}
+.admin__search .admin__input,
+.admin__search .admin__select {
+    background: #f4f4f4;
+    color: #b3967c;
+}
+.admin__search .admin__input::placeholder {
+    color: #9b8c7f;
+}
+.admin__search .admin__select option {
+    color: #8b7969;
+}
+.admin__search .admin__select option[disabled] {
+    color: #b9b0a7;
+}
+.admin__input {
+    height: 36px;
+    padding: 6px 10px;
+    border: 1px solid #c9beb5;
+    border-radius: 3px;
+}
+.admin__input--date {
+    width: 160px; /* 年月日の入力幅を拡大 */
+}
+.admin__input--keyword::placeholder {
+    font-size: 12px;
+    color: #9b8c7f;
+}
+.admin__select {
+    height: 36px;
+    padding: 6px 10px;
+    border: 1px solid #c9beb5;
+    border-radius: 3px;
+    background: #fff;
+}
+.admin__select--gender {
+    width: 90px;
+}
+.admin__select--category {
+    width: 180px;
+}
+.admin__input--keyword {
+    width: 340px;
+}
+.admin__button {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 3px;
+    border: 1px solid #7b6655;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.admin__button--primary {
+    background: #7b6655;
+    color: #fff;
+    border: none;
+    font-size: 12px; /* フォント小さく */
+}
+.admin__button--ghost {
+    background: #d9c6b5;
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    font-size: 12px; /* フォント小さく */
+}
+.admin__button--export {
+    background: #e1dbd699; /* 指定色（半透明） */
+    color: #8b7969;
+    border: none;
+    width: auto;
+    padding: 0 14px;
+    text-decoration: none;
+    font-size: 12px;
+}
+.admin__button--primary,
+.admin__button--ghost {
+    width: 76px; /* ボタン幅を狭く */
+    padding: 0;
+    flex: 0 0 auto;
+}
+.admin__button--danger {
+    background: #df3c23;
+    color: #fff;
+    border-color: #df3c23;
+    margin-top: 12px;
+}
+.admin__flash {
+    background: #fff1f1;
+    border: 1px solid #f0c9c9;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.admin__table-wrapper {
+    background: #fff;
+    border: 1px solid #e6dfd8;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.admin__table {
+    width: 100%;
+    border-collapse: separate; /* 内側の縦線のにじみ/白線対策 */
+    border-spacing: 0; /* 余白はゼロで維持 */
+}
+.admin__table th,
+.admin__table td {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.admin__table thead th {
+    background: #8c7766;
+    color: #fff;
+    text-align: left;
+    padding: 12px;
+    font-weight: 600;
+    /* 縦境界の白線を背景色で塗りつぶす */
+    box-shadow: inset 1px 0 0 #8c7766, inset -1px 0 0 #8c7766;
+}
+.admin__table tbody td {
+    padding: 12px;
+    border-top: 1px solid #eee7e0;
+}
+/* お名前（先頭カラム）の左側に余白を追加 */
+.admin__table thead th:first-child {
+    padding-left: 24px;
+}
+.admin__table tbody td:first-child {
+    padding-left: 24px;
+}
+.admin__detail-btn {
+    padding: 6px 12px;
+    border: 1px solid #c9beb5;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #d1b39b;
+}
+
+/* Modal styles moved to common.css */
+
+/* pagination styles moved to common.css (.app-pagination) */

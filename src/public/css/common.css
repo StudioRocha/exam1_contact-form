@@ -1,0 +1,402 @@
+/* ========================================
+   Theme Variables（テーマ用カラー/共通値）
+   ここを書き換えると全体の色味が一括で変わります
+   ======================================== */
+:root {
+    --c-text: #8b7969;
+    --c-accent: #8b7969;
+    --c-muted: #75675a;
+    --c-required: #f41515; /* 必須マークなど強調用 */
+    --c-header-border: #e5e5e5; /* ヘッダー専用のボーダー色 */
+    /* セレクト矢印アイコンのレスポンシブサイズ */
+    --select-icon-size: clamp(12px, 2.6vw, 32px);
+    /* 余白のレスポンシブ単位（小:8px〜大:16px） */
+    --space-s: clamp(8px, 1.2vw, 16px);
+}
+
+/* ========================================
+   Global Base（全ページ共通のベース）
+   タイポグラフィ / 背景色
+   ======================================== */
+body {
+    font-family: "Merriweather", "Noto Sans JP", serif;
+    line-height: 1.6;
+    color: var(--c-text);
+    background-color: #ffffff;
+}
+
+/* ========================================
+   Layout Styles（全体レイアウト）
+   ======================================== */
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+/* 画面幅に応じて全体を自動フィットさせる共通ラッパー */
+.viewport-fit {
+    --base-width: 980px;
+    /* 幅が base-width 未満のときだけ縮小。980px 以上ではスケールさせない（scale 最大 1） */
+    --scale: min(1, 100vw / var(--base-width));
+    transform: scale(var(--scale));
+    transform-origin: top center;
+    width: calc(100% / var(--scale));
+    margin: 0 auto;
+    /* layout のフレックス子要素として main に高さを渡す */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* transform: scale(0.8); */
+}
+
+/* --- Header（ヘッダー） ------------------- */
+.layout__header {
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px solid var(--c-header-border);
+    padding: 8px 0;
+    text-align: center;
+    display: flex;
+    align-items: center; /* ヘッダー内で垂直中央揃え */
+    justify-content: center; /* タイトルコンテナを中央に */
+    position: relative; /* 右端に独立配置するための基準 */
+}
+
+/* ヘッダー内のラッパー */
+.layout__header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row; /* タイトル左、ナビ右端 */
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+/* サイトタイトル */
+.layout__header-title {
+    font-size: 32px; /* サイトタイトルを大きく */
+    font-weight: 400;
+    color: var(--c-text); /* 落ち着いたブラウン系 */
+    margin: 0; /* 余白で上寄りに見えないよう調整 */
+    letter-spacing: 0.5px;
+}
+
+/* タイトルのリンク */
+.layout__header-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ヘッダーナビ */
+.layout__header-login {
+    position: absolute;
+    right: 60px; /* 右端からの余白 */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.layout__header-nav-list {
+    display: flex !important;
+    list-style: none;
+    gap: 0 !important; /* ログインボタン1つのみなのでgapを0に */
+    margin: 0 !important;
+    padding: 0 !important;
+    justify-content: flex-end !important;
+}
+
+.layout__header-nav-link {
+    text-decoration: none;
+    /* color: var(--c-text); */
+    color: #d3c6bb;
+    font-weight: 400;
+    font-size: 14px;
+    transition: color 0.3s ease, background-color 0.2s ease,
+        border-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border: 1px solid var(--c-header-border);
+    background: #f8f8f8;
+    border-radius: 3px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* ボタン要素にも同一スタイルを適用（logout用） */
+button.layout__header-nav-link {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+}
+
+.layout__header-nav-link:hover {
+    color: var(--c-text);
+    background-color: #f7f7f7;
+    border-color: #dcdcdc;
+}
+
+/* ========================================
+   Pagination (共通コンポーネント)
+   ======================================== */
+.app-pagination {
+    margin: 10px 0;
+}
+.app-pagination--left {
+    display: flex;
+    justify-content: flex-start;
+}
+.app-pagination--center {
+    display: flex;
+    justify-content: center;
+}
+.app-pagination--right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.app-pagination .pagination {
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 0;
+    white-space: nowrap;
+}
+.app-pagination .pagination li {
+    list-style: none;
+}
+.app-pagination .pagination a,
+.app-pagination .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 24px;
+    font-size: 12px;
+    border: 1px solid #c9beb5;
+    border-right: none;
+    color: #8b7969;
+    background: #fff;
+    border-radius: 0;
+    text-decoration: none;
+}
+.app-pagination .pagination li:last-child a,
+.app-pagination .pagination li:last-child span {
+    border-right: 1px solid #c9beb5;
+}
+.app-pagination .pagination .active span {
+    background: #7b6655;
+    color: #fff;
+    border-color: #7b6655;
+}
+.app-pagination .pagination .disabled a,
+.app-pagination .pagination .disabled span {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ========================================
+   Modal (共通) - adminページ由来のモーダルを共通化
+   ======================================== */
+.admin__modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+.admin__modal.is-open {
+    display: block;
+}
+.admin__modal-backdrop {
+    position: absolute;
+    inset: 0;
+}
+.admin__modal-dialog {
+    position: relative;
+    width: min(730px, 92vw);
+    margin: 7vh auto;
+    background: #fff;
+    border: 1px solid #85776c;
+    border-radius: 2px;
+    padding: 24px 28px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.admin__modal-close {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    background: #fff;
+    border: 1px solid #c9beb5;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: #8b7969;
+    font-size: 20px;
+}
+.admin__modal-body {
+    margin: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.admin__detail-list {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 28px;
+    row-gap: 18px;
+    text-align: left;
+    margin: 0 auto;
+    width: 100%;
+}
+.admin__detail-list dt {
+    color: #7b6655;
+    margin: 0;
+    padding: 6px 0;
+    font-weight: 600;
+}
+.admin__detail-list dd {
+    margin: 0;
+    padding: 6px 0;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+.admin__modal-body form {
+    text-align: center;
+    margin-top: 100px;
+}
+.admin__modal-body .admin__button--danger {
+    display: inline-block;
+    margin: 24px auto 0;
+}
+
+/* --- Main（メイン領域） ------------------ */
+.layout__main {
+    flex: 1;
+    padding: 40px 0; /* タイトルを上に寄せるために上側の余白を縮小 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ========================================
+   Contact Form Styles（お問い合わせ）
+   ======================================== */
+/* ページ固有スタイルは個別CSSへ分離（confirm.css / thanks.css） */
+
+/* 送信ボタン */
+.contact__form-submit {
+    background-color: #7b6655; /* ブラウンボタン */
+    color: #fff;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    /* 幅はテキスト長に応じて自動 */
+}
+
+.contact__form-submit:hover {
+    background-color: #6c5a4b;
+}
+
+/* エラーメッセージ */
+.contact__form-error {
+    color: #d74b4b;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-left: 0;
+    writing-mode: horizontal-tb; /* 念のため横書きを明示 */
+    white-space: normal;
+    word-break: break-word;
+    display: block;
+    width: 100%;
+}
+
+/* グリッド内のエラーは入力カラムの下に横並びで表示 */
+.contact__form-group .contact__form-error {
+    grid-column: 2 / -1;
+}
+
+.contact__form-errors {
+    color: #d74b4b;
+    background: #fdecec;
+    border: 1px solid #f2bcbc;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+}
+
+/* ========================================
+   Responsive Design - Mobile First
+   ======================================== */
+@media (max-width: 768px) {
+    .layout__header {
+        padding: 20px 0;
+    }
+
+    .layout__header-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .layout__header-nav-list {
+        gap: 20px;
+    }
+
+    .layout__main {
+        padding: 30px 0;
+    }
+
+    .contact__form {
+        padding: 30px 20px;
+    }
+
+    /* スマホでは幅100%に戻す */
+    .contact__form-select[name="category_id"] {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .contact__form-group {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .contact__form-label {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .contact__form-input--name,
+    .contact__form-input--tel {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact__form-radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact__form-error {
+        margin-left: 0;
+    }
+}
+
+/* ラジオボタンの色味（OS/ブラウザが対応する場合） */
+.contact__form-radio input[type="radio"] {
+    accent-color: var(--c-accent);
+}
+
+/* プレースホルダー色のトーン */
+::placeholder {
+    color: var(--c-muted);
+}

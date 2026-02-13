@@ -1,0 +1,286 @@
+/* Index (Contact Form) Page */
+
+/* セクションタイトル */
+.contact__title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--c-text);
+    margin-top: -32px; /* タイトル開始位置を少し上へ */
+}
+
+/* コンテナ */
+.contact {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    transform: scale(0.85); /*全体スケール*/
+}
+
+/* 画面にフィット（高さ基準でスケール） */
+.viewport-fit {
+    /* このページ専用の高さ基準（フォーム全体の想定高さ） */
+    --base-height: 1400px;
+
+    /* 高さのみでスケールを決定（元の値に係数を乗算） */
+    --scale-raw: clamp(0.5, 100vh / var(--base-height), 3.92);
+    --scale: calc(var(--scale-raw) * var(--shrink));
+    transform: scale(var(--scale));
+    transform-origin: top center;
+    width: calc(100% / var(--scale));
+    min-height: calc(100vh / var(--scale));
+}
+
+/* このページではメインの縦位置は共通のまま（見出しはそのまま） */
+.layout__main {
+    align-items: flex-start;
+    /* 共通の40pxを上書きして余白を圧縮 */
+    padding: 6px 0;
+}
+
+/* 全体を一括（個別スケールは無効化） */
+.contact .contact__form {
+    transform-origin: top center;
+    transform: none;
+}
+.contact .contact__title {
+    transform-origin: top center;
+}
+
+/* フォーム全体 */
+.contact__form {
+    background-color: #fff;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 920px; /* フォーム全体を適度な幅にして中央配置 */
+    padding-left: 0;
+    margin: 0 auto; /* 中央配置 */
+}
+
+/* 行（ラベル + 入力） */
+.contact__form-group {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    column-gap: 20%;
+    row-gap: 12px; /* 行内上下の間隔を詰める */
+    align-items: flex-start;
+    margin-bottom: 28px; /* グループ間の余白を縮小 */
+    margin-top: 12px; /* 開始位置を少し下げる */
+}
+
+/* 入力幅を安定 */
+.contact__form-group > input.contact__form-input,
+.contact__form-group > select.contact__form-select,
+.contact__form-group > textarea.contact__form-textarea {
+    width: 100%;
+}
+
+/* ラベル */
+.contact__form-label {
+    width: auto;
+    padding-right: 0;
+    font-weight: 400;
+    color: var(--c-text);
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+.contact__form-label--required::after {
+    content: " ※";
+    color: var(--c-required);
+}
+
+/* 単一入力 */
+input.contact__form-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    transition: border-color 0.3s ease, background-color 0.2s ease;
+    height: 40px;
+}
+
+/* 姓名 */
+.contact__form-input--name {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+.contact__form-input--name input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    height: 40px;
+}
+
+/* 電話番号 */
+.contact__form-input--tel {
+    --tel-gap: 10px;
+    --tel-hyphen: 12px;
+    display: grid;
+    grid-template-columns: 1fr var(--tel-hyphen) 1fr var(--tel-hyphen) 1fr;
+    column-gap: var(--tel-gap);
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+.contact__form-input--tel input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    height: 40px;
+}
+.contact__form-input--tel span {
+    color: var(--c-muted);
+    width: var(--tel-hyphen);
+    text-align: center;
+}
+
+/* ラジオ */
+.contact__form-radio-group {
+    display: flex;
+    gap: 20px;
+}
+.contact__form-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.contact__form-radio input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--c-accent);
+    background-color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    accent-color: var(--c-accent);
+}
+.contact__form-radio input[type="radio"]:checked {
+    background-color: var(--c-accent);
+    border-color: var(--c-accent);
+}
+
+/* セレクト */
+.contact__form-select {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--c-border);
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #f6f4f3;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolygon fill='%238b7969' points='6,9 18,9 12,15'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2vw center;
+    background-size: var(--select-icon-size);
+    padding-right: 40px;
+    color: var(--c-text);
+}
+/* 詳細度を上げて上書き */
+.contact__form
+    .contact__form-group
+    select.contact__form-select[name="category_id"] {
+    flex: 0 0 auto;
+    width: 280px;
+    justify-self: start;
+}
+.contact__form-select option {
+    color: var(--c-text);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* テキストエリア */
+.contact__form-textarea {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #eae7e4;
+    border-radius: 0;
+    font-size: 16px;
+    min-height: 140px;
+    resize: vertical;
+    font-family: inherit;
+    background-color: #f6f4f3;
+}
+
+/* 確認ボタンのラッパー */
+.contact__form-button {
+    margin-top: 32px;
+    text-align: center;
+}
+
+/* エラー表示 */
+.contact__form-error {
+    color: #d74b4b;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-left: 0;
+    writing-mode: horizontal-tb;
+    white-space: normal;
+    word-break: break-word;
+    display: block;
+    width: 100%;
+}
+.contact__form-group .contact__form-error {
+    grid-column: 2 / -1;
+}
+.contact__form-errors {
+    color: #d74b4b;
+    background: #fdecec;
+    border: 1px solid #f2bcbc;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact__form {
+        padding: 30px 20px;
+    }
+    .contact__form-select[name="category_id"] {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+    .contact__form-group {
+        flex-direction: column;
+        gap: 20px; /* 行間を広く */
+        margin-bottom: 28px; /* グループ間の余白を広く */
+    }
+    .contact__form-label {
+        width: 100%;
+        padding-right: 0;
+    }
+    .contact__form-input--name,
+    .contact__form-input--tel {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .contact__form-radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .contact__form-error {
+        margin-left: 0;
+    }
+}
